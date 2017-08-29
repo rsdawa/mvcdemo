@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+ <a href="./?c=User">用户列表</a>　<a href="./?c=Product">商品列表</a>
+ <hr>
+  <table border=1>
+  <tr><td>用户名</td><td><?php echo $row['user_name'] ?></td></tr>
+  <tr><td>年龄</td> <td><?php echo $row['age'] ?></td></tr>
+  <tr><td>学历</td><td><?php echo $row['edu'] ?></td></tr>
+  <tr><td>爱好</td><td><?php echo $row['xingqu'] ?></td></tr>
+  <tr><td>家乡</td><td><?php echo $row['from'] ?></td></tr>
+  <tr><td>注册时间</td><td><?php echo $row['reg_time'] ?></td></tr>
+  </table>
+  <a href="?c=User">返回</a>
+ </body>
+</html>

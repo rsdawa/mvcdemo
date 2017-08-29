@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+ <a href="./?c=User">用户列表</a>　<a href="./?c=Product">商品列表</a>
+ <hr>
+ <a href="?a=adduser">添加用户</a>
+  <table border=1>
+  <tr>
+  <td>id</td>
+  <td>用户名</td>
+  <td>年龄</td>
+  <td>学历</td>
+  <td>爱好</td>
+  <td>家乡</td>
+  <td>注册时间</td>
+  <td>操作</td>
+  </tr>
+  <?php
+  foreach ($result as $row){
+  ?>
+	  <tr>
+	  <td><?php echo $row['user_id'] ?></td>
+	  <td><?php echo $row['user_name'] ?></td>
+	  <td><?php echo $row['age'] ?></td>
+	  <td><?php echo $row['edu'] ?></td>
+	  <td><?php echo $row['xingqu'] ?></td>
+	  <td><?php echo $row['from'] ?></td>
+	  <td><?php echo $row['reg_time'] ?></td>
+	  <td>
+    <a href="?c=User&a=Detail&id=<?php echo $row['user_id'] ?>">详细</a>　
+    <a href="?c=User&a=Delete&id=<?php echo $row['user_id'] ?>">删除</a>　
+    <a href="?c=User&a=Modify&id=<?php echo $row['user_id'] ?>">修改</a></td>
+	  </tr>
+  <?php } ?> 
+  </table>
+  当前用户总数：<?php echo $sum ?>
+
+ </body>
+</html>
