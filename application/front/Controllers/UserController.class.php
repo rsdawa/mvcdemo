@@ -8,7 +8,7 @@ class UserController extends BaseController
         $obj1   = ModelFactory::M("UserModel");
         $result = $obj1->getAllUser();
         $sum    = $obj1->getAllUserCount();
-        include "./Views/userlist.html";
+        include "./Application/Front/Views/userlist.html";
     }
     //显示单个用户
     public function Detail()
@@ -20,7 +20,7 @@ class UserController extends BaseController
             die();
         }
         $row = $obj1->getOneUser($id);
-        include_once "./Views/userdetail.html";
+        include_once "./Application/Front/Views/userdetail.html";
     }
     //删除用户
     public function Delete()
@@ -33,7 +33,7 @@ class UserController extends BaseController
     //添加用户表单
     public function AddUser()
     {
-        include './Views/user_form.html';
+        include './Application/Front/Views/user_form.html';
     }
     //添加用户方法
     public function InsertUser()
@@ -52,7 +52,7 @@ class UserController extends BaseController
         $user = $obj->getOneUser($id);
         //兴趣字符串转换成数组
         $xingqu = explode(',', $user['xingqu']);
-        include "./Views/user_modify.html";
+        include "./Application/Front/Views/user_modify.html";
 
     }
     //更新数据库用户信息

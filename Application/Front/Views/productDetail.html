@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+ <a href="./?c=User">用户列表</a>　<a href="./?c=Product">商品列表</a>
+ <hr>
+  <table border=1>
+  <tr><td>ID</td><td><?php echo $result['pro_id'] ?></td></tr>
+  <tr><td>名称</td> <td><?php echo $result['pro_name'] ?></td></tr>
+  <tr><td>类别</td><td><?php echo $result['leibie'] ?></td></tr>
+  <tr><td>价格</td><td><?php echo $result['price'] ?></td></tr>
+  <tr><td>品牌</td><td><?php echo $result['pinpai'] ?></td></tr>
+  <tr><td>产地</td><td><?php echo $result['chandi'] ?></td></tr>
+  </table>
+  <a href="?c=Product">返回</a>
+ </body>
+</html>
