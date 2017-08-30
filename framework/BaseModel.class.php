@@ -1,5 +1,4 @@
 <?php
-//require_once "./Framework/MySQLDB.class.php";
 class BaseModel
 {
     private $conf = array(

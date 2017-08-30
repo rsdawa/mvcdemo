@@ -1,5 +1,4 @@
 <?php
-//require_once './Framework/BaseModel.class.php';
 class IndexModel extends BaseModel
 {
     public function GetHello()

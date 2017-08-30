@@ -6,7 +6,7 @@ class ProductController extends BaseController
     {
         $obj    = ModelFactory::M("ProductModel");
         $result = $obj->getAllProduct();
-        include "./Application/Front/Views/productlist.html";
+        include VIEW_PATH . "productlist.html";
     }
     //删除单个商品
     public function Delete()
@@ -22,7 +22,7 @@ class ProductController extends BaseController
         $id     = $_GET['id'];
         $obj    = ModelFactory::M("ProductModel");
         $result = $obj->productDetail($id);
-        include "./Application/Front/Views/productDetail.html";
+        include VIEW_PATH . "productDetail.html";
     }
 
 }

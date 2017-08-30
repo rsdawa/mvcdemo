@@ -1,5 +1,4 @@
 <?php
-//require_once './Framework/BaseModel.class.php';
 class ProductModel extends BaseModel
 {
     public function getAllProduct()

@@ -5,6 +5,6 @@ class IndexController extends BaseController
     {
         $M    = ModelFactory::M("IndexModel");
         $data = $M->GetHello();
-        include './Application/Back/Views/index.html';
+        include VIEW_PATH . 'index.html';
     }
 }

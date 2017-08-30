@@ -1,6 +1,4 @@
 <?php
-//require_once "./Framework/ModelFactory.class.php";
-//require_once "./Framework/BaseController.class.php";
 //模块变量
 $m = !empty($_GET['m']) ? ($_GET['m']) : 'Front';
 //控制器变量
@@ -14,25 +12,32 @@ if (!file_exists($modelPath) || !file_exists($controllerPath)) {
     die();
 }
 
-define("PLATPATH", "./Application/{$m}/");
-
-//require_once $modelPath;
-//require_once $controllerPath;
+//为了简化代码，定义常量
+define("DS", DIRECTORY_SEPARATOR); //DIRECTORY_SEPARATOR表示目录分隔符，'/'或'\'
+define("ROOT", __DIR__ . DS); //用root常量表示当前index.php页面所在的绝对路径
+define("PLAT", $m); //当前平台名（模块）
+define("PLAT_PATH", ROOT . 'Application' . DS . PLAT . DS); //当前平台（模块）目录
+define("CTRL_PATH", PLAT_PATH . 'Controllers' . DS); //当前控制器目录
+define("MODEL_PATH", PLAT_PATH . 'Models' . DS); //当前模型目录
+define("VIEW_PATH", PLAT_PATH . 'Views' . DS); //当前视图目录
+define("FRAME", ROOT . 'Framework' . DS); //框架公共目录
 
 //自动加载
 function __autoload($name)
 {
+    //若干个mvc控制类
     $arr = array("MySQLDB", "BaseModel", "BaseController", "ModelFactory");
     if (in_array($name, $arr)) {
-        require_once "./Framework/{$name}.class.php";
+        require_once FRAME . "{$name}.class.php";
     } else if (substr($name, -5) == 'Model') {
-        require_once PLATPATH . "Models/{$name}.class.php";
+        require_once MODEL_PATH . "{$name}.class.php";
     } else if (substr($name, -10) == 'Controller') {
-        require_once PLATPATH . "Controllers/{$name}.class.php";
+        require_once CTRL_PATH . "{$name}.class.php";
     }
 }
-
+//控制器
 $c_name     = $c . 'Controller';
 $controller = new $c_name();
-$action     = !empty($_GET['a']) ? $_GET['a'] : "Index";
+//方法
+$action = !empty($_GET['a']) ? $_GET['a'] : "Index";
 $controller->$action();
