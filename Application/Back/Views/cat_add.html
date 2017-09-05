@@ -1,0 +1,54 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<title>ECSHOP 管理中心 - 添加分类 </title>
+<meta content="noindex, nofollow" name="robots">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link type="text/css" rel="stylesheet" href="web/back/styles/general.css">
+<link type="text/css" rel="stylesheet" href="web/back/styles/main.css">
+</head>
+<body style="cursor: auto;">
+
+<h1>
+<span class="action-span"><a href="index.php?p=back&c=category&a=show">商品分类</a></span>
+<span class="action-span1"><a href="index.php?act=main">ECSHOP 管理中心</a> </span><span class="action-span1" id="search_id"> - 添加分类 </span>
+<div style="clear:both"></div>
+</h1>
+<!-- start add new category form -->
+<div class="main-div">
+  <form onsubmit="" enctype="multipart/form-data" name="theForm" method="post" action="index.php?p=back&c=category&a=insert">
+  <table width="100%" id="general-table">
+      <tbody><tr>
+        <td class="label">分类名称:</td>
+        <td>
+          <input type="text" size="27" value="" maxlength="20" name="cat_name"> <font color="red">*</font>
+        </td>
+      </tr>
+      <tr>
+        <td class="label">上级分类:</td>
+        <td>
+          <select name="parent_id">
+            <option value="0">顶级分类</option>
+			<?php foreach($cat_list as $row) : ?>
+			<option value="<?php echo $row['cat_id'];?>">
+			<?php echo str_repeat('&nbsp;', $row['deep']*4), $row['cat_name'];?>
+			</option>
+			<?php endForeach;?>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td class="label">排序:</td>
+        <td>
+          <input type="text" size="15" value="100" name="sort_order">
+        </td>
+      </tr>
+	  </table>
+      <div class="button-div">
+        <input type="submit" value=" 确定 ">
+        <input type="reset" value=" 重置 ">
+      </div>
+  </form>
+</div>
+<div id="footer">
+&copyECSHOP,Thanks!
+</div>
+</body></html>

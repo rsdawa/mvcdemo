@@ -1,0 +1,51 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<title>ECSHOP 管理中心 - 商品分类 </title>
+<meta content="noindex, nofollow" name="robots">
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<link type="text/css" rel="stylesheet" href="web/back/styles/general.css">
+<link type="text/css" rel="stylesheet" href="web/back/styles/main.css">
+</head>
+<body style="cursor: auto;">
+
+<h1>
+<span class="action-span"><a href="index.php?p=back&c=category&a=add">添加分类</a></span>
+<span class="action-span1"><a href="index.php?p=back&c=index&a=main">ECSHOP 管理中心</a> </span><span class="action-span1" id="search_id"> - 商品分类 </span>
+<div style="clear:both"></div>
+</h1>
+
+<form name="listForm" action="" method="post">
+<!-- start ad position list -->
+<div id="listDiv" class="list-div">
+
+<table width="100%" cellspacing="1" cellpadding="2" id="list-table">
+  <tr>
+    <th>分类名称</th>
+    <th>商品数量</th>
+    <th>排序</th>
+    <th>操作</th>
+  </tr>
+  <?php foreach($list as $row) :?>
+  <tr align="center" id="0_6" class="0">
+    <td align="left" class="first-cell" style="background-color: rgb(255, 255, 255);">
+	<img width="9" height="9" border="0" onclick="" style="margin-left:<?php echo $row['deep'];?>em" id="icon_1_9" src="web/back/images/menu_minus.gif">
+    <span><a href="#"><?php echo $row['cat_name'];?></a></span>
+    </td>
+    <td width="" style="background-color: rgb(255, 255, 255);">商品数量</td>
+    <td width="" align="right" style="background-color: rgb(255, 255, 255);">
+	<span onclick=""><?php echo $row['sort_order'];?></span>
+	</td>
+    <td width="24%" align="center" style="background-color: rgb(255, 255, 255);">
+      <a href="#">转移商品</a> |
+      <a href="#">编辑</a> |
+      <a title="移除" onclick="return confirm('确定删除 <?php echo $row['cat_name'];?> 么?');" href="index.php?p=back&c=category&a=delete&id=<?php echo $row['cat_id'];?>">移除</a>
+    </td>
+  </tr>
+  <?php endForeach;?>
+  </table>
+</div>
+</form>
+<div id="footer">
+&copyECSHOP,Thanks!
+</div>
+
+</body></html>
