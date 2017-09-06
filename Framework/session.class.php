@@ -18,7 +18,7 @@ class Session
 
         ini_set("session.gc_probability", 1); //随着新访问的回收概率1/2
         ini_set("session.gc_divisor", 2);
-        ini_set("session.gc_maxlifetime", 20); //超过20秒即超时回收
+        ini_set("session.gc_maxlifetime", 1440); //超过20秒即超时回收
 
         /*
         session自定义存储
