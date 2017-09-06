@@ -20,8 +20,9 @@ class IndexController extends BaseController
         $result = $model->CheckLogin($user, $pass);
         //3.返回结果
         if ($result) {
-            //用户名密码判断成功，设置cookie
-            setcookie('isLogin', 'OK');
+
+            $_SESSION['isLogin'] = 'OK';
+
             //在用户浏览器中存储用户名，下次登录自动输入
             setcookie('user_name', $user, time() + 7 * 24 * 3600, "/");
             $this->MsgAndGo('登录成功,3秒后跳转后台首页...', '?m=back&c=index&a=loginOK');
@@ -31,11 +32,17 @@ class IndexController extends BaseController
     }
     public function loginOK()
     {
-        if (!empty($_COOKIE['isLogin']) && $_COOKIE['isLogin'] == 'OK') {
+        //session判断
+        if (!empty($_SESSION['isLogin']) && $_SESSION['isLogin'] == 'OK') {
             include VIEW_PATH . 'admin_home.html';
         } else {
             $this->MsgAndGo('请先登录,3秒后跳转登录页...', '?m=Back&c=Index');
         }
 
+    }
+    public function logOut()
+    {
+        session_destroy();
+        header("location:?m=Back&c=Index");
     }
 }
