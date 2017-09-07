@@ -1,4 +1,5 @@
 <?php
+
 class MySQLDB
 {
     private $link = null;

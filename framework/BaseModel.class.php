@@ -1,4 +1,5 @@
 <?php
+
 class BaseModel
 {
     private $conf = array(
