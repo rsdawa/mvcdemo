@@ -12,8 +12,12 @@ class IndexController extends BaseController
     public function checkLogin()
     {
         //1.获取表单信息（用户名、密码）
-        $user = $_POST['username'];
-        $pass = $_POST['password'];
+        //防注入处理(三个函数):
+        //addslashes()
+        //mysql_real_escape_string()
+        //$pdo->quote()
+        $user = addslashes($_POST['username']);
+        $pass = addslashes($_POST['password']);
 
         //2.调用模型进行验证
         $model  = ModelFactory::M("IndexModel");
@@ -22,10 +26,12 @@ class IndexController extends BaseController
         if ($result) {
 
             $_SESSION['isLogin'] = 'OK';
+            $_SESSION['USER']    = $user;
 
             //在用户浏览器中存储用户名，下次登录自动输入
             setcookie('user_name', $user, time() + 7 * 24 * 3600, "/");
-            $this->MsgAndGo('登录成功,3秒后跳转后台首页...', '?m=Back&c=Index&a=index');
+            //$this->MsgAndGo('登录成功,3秒后跳转后台首页...', '?m=Back&c=Index&a=index');
+            header("location:?m=Back&c=Index&a=index");
         } else {
             $this->MsgAndGo('用户名和密码不匹配', '?m=Back&c=Index&a=login');
         }
