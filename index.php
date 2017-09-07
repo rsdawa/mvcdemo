@@ -1,5 +1,4 @@
 <?php
-header("content-type:text/html;charset=utf-8");
 //模块变量
 $m = !empty($_GET['m']) ? ($_GET['m']) : 'Front';
 //控制器变量
@@ -7,18 +6,11 @@ $c = !empty($_GET['c']) ? ($_GET['c']) : 'User';
 
 $modelPath      = "./Application/{$m}/Models/{$c}Model.class.php";
 $controllerPath = "./Application/{$m}/Controllers/{$c}Controller.class.php";
-if (!file_exists($controllerPath)) {
-
-    echo "<b>`{$c}Controller.class.php`</b>控制器不存在!";
+if (!file_exists($modelPath) || !file_exists($controllerPath)) {
+    header("content-type:text/html;charset=utf-8");
+    echo "控制器不存在!";
     die();
 }
-/*
-if (!file_exists($modelPath)) {
-
-echo "<b>`{$c}Model.class.php`</b>模型不存在!";
-die();
-}
-//*/
 
 //为了简化代码，定义常量
 define("DS", DIRECTORY_SEPARATOR); //DIRECTORY_SEPARATOR表示目录分隔符，'/'或'\'
