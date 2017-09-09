@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>添加商品</title>
+	<style>
+		form{font-size:15px;}
+		label{
+			width: 80px;
+		    display: inline-block;
+		    text-align: right;
+		    padding-right: 10px;
+		    padding-bottom:10px;
+		}
+	</style>
+</head>
+<body>
+	<form name="form1" action="?m=Back&c=Goods&a=goodsInsert" method="post">
+		<h3>商品添加</h3><hr>
+		<label>商品名:</label><input type="text" name="goods_name"><br />
+		<label>价格:</label><input type="text" name="price"><br />
+		<label>市场价:</label><input type="text" name="market_price"><br />
+		<label>库存量:</label><input type="text" name="stock_num"><br />
+		<label>是否显示:</label>
+		<input type="radio" name='is_show' value="1" checked>显示
+		<input type="radio" name='is_show' value="0">不显示
+		<br />
+		<label>状态:</label>
+		<input type="checkbox" name='status[]' value="1">精品
+		<input type="checkbox" name='status[]' value="2">热销
+		<input type="checkbox" name='status[]' value="4">新品
+		<br />
+		<label>图片:</label><input type="text" name="image_original"><br />
+		<label style="position:relative;top:-60px">商品详情:</label><textarea name="detail" id="" cols="40" rows="8"></textarea><br />
+		<div style="margin:30px;padding-left:50px">
+			<input type="submit" value="提交" >
+			<input type="button" value="返回" onclick="javascript:history.back()" />
+		</div>
+	</form>
+</body>
+</html>

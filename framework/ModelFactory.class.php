@@ -1,5 +1,4 @@
 <?php
-
 //单例工厂类，保证所产生的对象只有一份
 class ModelFactory
 {
