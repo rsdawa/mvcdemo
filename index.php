@@ -34,7 +34,7 @@ define("FRAME", ROOT . 'Framework' . DS); //框架公共目录
 function __autoload($name)
 {
     //若干个mvc控制类
-    $arr = array("MySQLDB", "BaseModel", "BaseController", "ModelFactory", "Session");
+    $arr = array("MySQLDB", "BaseModel", "BaseController", "ModelFactory", "Session", "Upload");
     if (in_array($name, $arr)) {
         require_once FRAME . "{$name}.class.php";
     } else if (substr($name, -5) == 'Model') {
