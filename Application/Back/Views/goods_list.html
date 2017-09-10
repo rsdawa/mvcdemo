@@ -17,6 +17,7 @@
   <td>库存</td>
   <td>是否显示</td>
   <td>属性</td>
+  <td>商品图</td>
   <td>操作</td>
   </tr>
   <?php
@@ -29,7 +30,8 @@
 	  <td><?php echo $row['market_price'] ?></td>
 	  <td><?php echo $row['stock_num'] ?></td>
 	  <td><?php echo $show[$row['is_show']] ?></td>
-	  <td><?php echo $row['status'] ?></td>
+    <td><?php echo $row['status'] ?></td>
+	  <td><img height="80" src="<?php echo UPLOAD_PATH.$row['image_original'] ?>" onerror="this.src='web/back/images/null.jpg'"></td>
 	  <td>
     <a href="?c=User&a=Detail&id=<?php echo $row['user_id'] ?>">详细</a>　
     <a href="?c=User&a=Delete&id=<?php echo $row['user_id'] ?>">删除</a>　

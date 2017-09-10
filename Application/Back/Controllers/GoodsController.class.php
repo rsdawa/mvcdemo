@@ -21,8 +21,10 @@ class GoodsController extends BaseController
         $arr['stock_num']      = addslashes($_POST['stock_num']);
         $arr['is_show']        = addslashes($_POST['is_show']);
         $arr['status']         = addslashes(array_sum($_POST['status']));
-        $arr['image_original'] = $this->upload() ? $this->upload() : "";
+        $img                   = $this->upload();
+        $arr['image_original'] = ($img != false) ? $img : "";
         $arr['detail']         = addslashes($_POST['detail']);
+
         //调用模型写入数据库
         $model  = ModelFactory::M('GoodsModel');
         $result = $model->goodsInsert($arr);

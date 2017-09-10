@@ -29,6 +29,7 @@ define("CTRL_PATH", PLAT_PATH . 'Controllers' . DS); //当前控制器目录
 define("MODEL_PATH", PLAT_PATH . 'Models' . DS); //当前模型目录
 define("VIEW_PATH", PLAT_PATH . 'Views' . DS); //当前视图目录
 define("FRAME", ROOT . 'Framework' . DS); //框架公共目录
+define("UPLOAD_PATH", "web/back/uploadFiles/"); //上传文件目录
 
 //自动加载
 function __autoload($name)
