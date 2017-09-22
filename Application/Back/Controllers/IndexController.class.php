@@ -16,8 +16,15 @@ class IndexController extends BaseController
         //addslashes()
         //mysql_real_escape_string()
         //$pdo->quote()
-        $user = addslashes($_POST['username']);
-        $pass = addslashes($_POST['password']);
+        $user      = addslashes($_POST['username']);
+        $pass      = addslashes($_POST['password']);
+        $validCode = addslashes($_POST['validCode']); //验证码
+
+        //进行验证码判断
+        if (strtoupper($validCode) != strtoupper($_SESSION['code'])) {
+            $this->MsgAndGo('验证码错误', '?m=Back&c=Index&a=login');
+            die();
+        }
 
         //2.调用模型进行验证
         $model  = ModelFactory::M("IndexModel");
@@ -66,5 +73,16 @@ class IndexController extends BaseController
     {
         session_destroy();
         header("location:?m=Back&c=Index&a=login");
+    }
+
+    public function valid()
+    {
+        //定义验证码调用方法以使用session。
+        //由于自定义session类，导致直接在验证码生成文件中写session无效
+        //require_once './validCode.php';
+
+        //调用验证码类
+        $validCode = new ValidCode();
+        $validCode->createCode(4); //参数为验证码位数
     }
 }

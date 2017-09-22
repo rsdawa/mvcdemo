@@ -35,7 +35,7 @@ define("UPLOAD_PATH", "web/back/uploadFiles/"); //上传文件目录
 function __autoload($name)
 {
     //若干个mvc控制类
-    $arr = array("MySQLDB", "BaseModel", "BaseController", "ModelFactory", "Session", "Upload");
+    $arr = array("MySQLDB", "BaseModel", "BaseController", "ModelFactory", "Session", "Upload", "ValidCode");
     if (in_array($name, $arr)) {
         require_once FRAME . "{$name}.class.php";
     } else if (substr($name, -5) == 'Model') {
